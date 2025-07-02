@@ -1,0 +1,14 @@
+.gradient-background {
+    /* display: inline-block; */
+    /* padding: 5px 30px; */
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  /* .gradient-background h1 {
+    font-family: Fantasy, "Copperplate";
+    font-weight: bold;
+    font-size: 4rem;
+  }
+   */

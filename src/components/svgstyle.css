@@ -1,0 +1,45 @@
+.drawing-svg path {
+    stroke-dasharray: 300; /* Adjust to the path length */
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 1000ms ease-in-out;
+  }
+  
+  .drawing-svg.visible path {
+    stroke-dashoffset: 0;
+  }
+  
+
+  .timeline-svg path, 
+.timeline-svg circle {
+  stroke-dasharray: 300; /* Adjust this for the length of your path */
+  stroke-dashoffset: 300;
+  transition: stroke-dashoffset 1500ms ease-in-out;
+}
+
+.timeline-svg.visible path,
+.timeline-svg.visible circle {
+  stroke-dashoffset: 0;
+}
+
+.timeline3-svg path, 
+.timeline3-svg circle {
+  stroke-dasharray: 1500; /* Adjust this for the length of your path */
+  stroke-dashoffset: 1500;
+  transition: stroke-dashoffset 2500ms ease-in-out;
+}
+
+.timeline3-svg.visible path,
+.timeline3-svg.visible circle {
+  stroke-dashoffset: 0;
+}
+
+.animated-svg path {
+    stroke-dasharray: 500; /* Adjust this for the path length */
+    stroke-dashoffset: 500;
+    transition: stroke-dashoffset 1500ms ease-in-out;
+  }
+  
+  .animated-svg.visible path {
+    stroke-dashoffset: 0;
+  }
+  
