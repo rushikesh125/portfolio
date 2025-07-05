@@ -1,26 +1,43 @@
 import React from "react";
-import { useEffect } from 'react'
+import { useEffect } from "react";
 import { fadeUp } from "@/app/utils";
 const ProjectCard = (props) => {
+  const infoAlign = props.infoAlign || "right";
+  const infoBgColor =
+    props.infoBgColor ||
+    "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500";
+  const cardTitle = props.cardTitle || "CMS Dashboard";
+  const cardDescription =
+    props.cardDescription ||
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,necessitatibus aliquam. Perspiciatis, obcaecati nulla inventore error totam nam nesciunt fugiat temporibus alias ex iure soluta tenetur repudiandae, autem fugit.";
+  const cardTechStack = props.cardTechStack || [
+    "React",
+    "Node",
+    "Express",
+    "Tailwindcss",
+    "MongoDB",
+    "MUI",
+  ];
+  const demoLink = props.demoLink || "#";
+  const githubLink = props.githubLink || "#";
 
-
-  const infoAlign = props.infoAlign || "right"
-  const infoBgColor = props.infoBgColor || "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-  const cardTitle = props.cardTitle || "CMS Dashboard"
-  const cardDescription = props.cardDescription || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,necessitatibus aliquam. Perspiciatis, obcaecati nulla inventore error totam nam nesciunt fugiat temporibus alias ex iure soluta tenetur repudiandae, autem fugit."
-  const cardTechStack = props.cardTechStack || ["React","Node","Express","Tailwindcss","MongoDB","MUI"]
-  const demoLink = props.demoLink || "#"
-  const githubLink = props.githubLink || "#"
-
-  useEffect(()=>{
-    fadeUp('fade-up',800)
-  },[])
+  useEffect(() => {
+    fadeUp("fade-up", 800);
+  }, []);
 
   return (
     <>
-      <div className={`w-full md:w-6xl lg:8/12 fade-up mx-auto relative p-1 md:flex ${infoAlign == "right"? "":"flex-row-reverse"} items-center overflow-hidden my-10`}>
-        <div className={`absolute w-32 h-32  md:w-56 md:h-56  z-0 ${infoBgColor} 
-        ${infoAlign == "right" ? "right-0":"left-0"} blur-[50px] md:blur-[100px] bottom-0 md:top-1/2 -translate-y-1/2`}></div>
+      <div
+        className={`w-full md:w-6xl lg:8/12 fade-up mx-auto relative p-1 md:flex ${
+          infoAlign == "right" ? "" : "flex-row-reverse"
+        } items-center overflow-hidden my-10`}
+      >
+        <div
+          className={`absolute w-32 h-32  md:w-56 md:h-56  z-0 ${infoBgColor} 
+        ${
+          infoAlign == "right" ? "right-0" : "left-0"
+        } blur-[50px] md:blur-[100px] bottom-0 md:top-1/2 -translate-y-1/2`}
+        ></div>
         <div className="w-full md:w-4/6 p-1  aspect-video z-50 md:z-20">
           <img
             src="https://i.ibb.co/8D40B0c/sample-video.png"
@@ -28,23 +45,30 @@ const ProjectCard = (props) => {
             className="aspect-video"
           />
         </div>
-        <div className={`w-full md:w-3/6 p-1 relative md:flex flex-col justify-evenly ${infoAlign == "right"? "items-end":""}  z-30`}>
+        <div
+          className={`w-full md:w-3/6 p-1 relative md:flex flex-col justify-evenly ${
+            infoAlign == "right" ? "items-end" : ""
+          }  z-30`}
+        >
           {/* <div className="py-4 hidden md:block"></div> */}
           <h1 className="font-bold text-4xl py-1 my-2">{cardTitle}</h1>
-          <div className="w-full md:w-[120%] bg-slate-800 py-3 my-3 px-2  rounded-sm text-gray-300 ">
-            <p className="hidden md:block " dir={`${infoAlign == "right"? "rtl":"ltr"}`}>
-             {cardDescription}
+          <div className="w-full md:w-[120%]  py-3 my-3 px-2 rounded-sm text-gray-300">
+            <p
+              className="hidden md:block bg-white/10 backdrop-blur-md rounded-md border border-white/20 shadow-sm px-4 py-2"
+              dir={`${infoAlign == "right" ? "rtl" : "ltr"}`}
+            >
+              {cardDescription}
             </p>
-            <p className="md:hidden">
+            <p className="md:hidden bg-white/10 backdrop-blur-md rounded-md border border-white/20 shadow-sm px-4 py-2">
               {cardDescription}
             </p>
           </div>
+
           {/* <div className="flex flex-wrap justify-evenly py-1 ">
            {cardTechStack.map((items)=> <li className="list-none mx-1" key={items}>{items}</li>)}
          
           </div> */}
           <div className="flex my-3">
-            
             {/* <a href={`${githubLink}`} className="mx-3 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
