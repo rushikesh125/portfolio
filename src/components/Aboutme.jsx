@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { fadeUp } from "@/app/utils";
+import AboutSvgme from "./svg/Aboutme";
 const Aboutme = () => {
   useEffect(() => {
     fadeUp("fade-up", 800);
@@ -16,19 +17,10 @@ const Aboutme = () => {
           </h1>
           <div className="lg:flex flex-row-reverse text-slate-200">
             <div className="lg:w-1/2 ">
-              <div className="relative min-h-[350px] md:min-h[450px]">
-                <img
-                  src="https://i.ibb.co/1ZWyjxN/profile-img.png"
-                  className="absolute w-1/2 md:w-[200px] lg:w-1/2 z-30 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
-                  alt="profile-img"
-                  border="0"
-                />
-                <img
-                  src="/images/bg-shapre.svg"
-                  className="absolute w-[200%] md:w-2/4 lg:w-11/12 z-20 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 "
-                  alt="profile-img"
-                  border="0"
-                />
+              <div className="relative min-h-[350px] md:min-h[450px] overflow-hidden flex justify-center items-center">
+                
+                <AboutSvgme/>
+                
               </div>
             </div>
             <div className="lg:w-1/2">
