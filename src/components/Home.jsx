@@ -1,17 +1,17 @@
-
+"use client"
 import { useEffect } from 'react';
 // import rishi from ".";
 // import "../../public/style.css";
 import GradientText from "./GradientText";
 import CodeBlock from "./CodeBlock";
 // import BackgroundSVG from ".";
-import ScrollReveal from 'scrollreveal';
+//import ScrollReveal from 'scrollreveal';
 import { fadeUp } from '@/app/utils';
 const Home = () => {
   useEffect(() => {
     // Initialize ScrollReveal
-    fadeUp('fade-up',1000);
-    fadeUp('fade-up-1200',1200);
+    // fadeUp('fade-up',1000);
+    // fadeUp('fade-up-1200',1200);
     // ScrollReveal().reveal('.fade-up', {
     //   distance: '50px',
     //   duration: 1000,

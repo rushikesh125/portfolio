@@ -1,6 +1,7 @@
+"use client"
 import React from "react";
 import { useEffect } from "react";
-import { fadeUp } from "@/app/utils";
+// import { fadeUp } from "@/app/utils";
 const ProjectCard = (props) => {
   const infoAlign = props.infoAlign || "right";
   const infoBgColor =
@@ -23,7 +24,7 @@ const ProjectCard = (props) => {
   const githubLink = props.githubLink || "#";
 
   useEffect(() => {
-    fadeUp("fade-up", 800);
+    // fadeUp("fade-up", 800);
   }, []);
 
   return (

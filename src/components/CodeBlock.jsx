@@ -1,16 +1,17 @@
+"use client"
 import React,{useEffect} from "react";
 import Typewriter from "typewriter-effect";
-import ScrollReveal from 'scrollreveal';
+//import ScrollReveal from 'scrollreveal';
 const CodeBlock = () => {
-    useEffect(()=>{
-        ScrollReveal().reveal('.fade-in-left', {
-            distance: '50px',
-            duration: 1000,
-            origin: 'left',
-            opacity: 0,
-            reset:false
-          });
-    },[])
+    // useEffect(()=>{
+    //     ScrollReveal().reveal('.fade-in-left', {
+    //         distance: '50px',
+    //         duration: 1000,
+    //         origin: 'left',
+    //         opacity: 0,
+    //         reset:false
+    //       });
+    // },[])
   return (
     <div className="fade-in-left relative w-full mt-1 h-auto  rounded-lg flex bg-black overflow-hidden text-wrap flex-wrap border border-slate-500">
      <span className="absolute w-full -bottom-0 left-[1.125rem] h-px  bg-gradient-to-r from-pink-400/30 via-emerald-400/90 to-violet-400/0 transition-opacity duration-500 group-hover:opacity-40" />

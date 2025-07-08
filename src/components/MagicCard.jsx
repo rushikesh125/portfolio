@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect } from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { cn } from "@/app/utils"; // Ensure this utility is defined in your project
-import { fadeUp } from "@/app/utils";
+// import { fadeUp } from "@/app/utils";
 // Create the MagicCard component
 export const MagicCard = ({
   children,
@@ -37,7 +37,7 @@ export const MagicCard = ({
   }, [mouseX, mouseY, gradientSize]);
 
   useEffect(()=>{
-    fadeUp('fade-up',800)
+    // fadeUp('fade-up',800)
   },[])
 
   return (
