@@ -1,6 +1,6 @@
 import React from 'react'
 import ProjectCard from './ProjectCard'
-
+import { TopProjects } from '@/projects'
 const Projects = () => {
   
   return (
@@ -12,8 +12,9 @@ const Projects = () => {
             <h1 className="font-bold text-3xl py-4 inline-block heading">
               Some Things I've Build
             </h1>
-            <ProjectCard/>
-            <ProjectCard infoAlign="left" cardTechStack={["Nodejs","NextJS","TailwindCSS","ExpressJS"]}/>
+            <ProjectCard {...TopProjects[0]}/>
+            <ProjectCard {...TopProjects[1]} infoAlign="left" cardTechStack={["Nodejs","NextJS","TailwindCSS","ExpressJS"]}/>
+            <ProjectCard {...TopProjects[2]} />
             
           </div>
         </div>

@@ -6,9 +6,9 @@ const ProjectCard = (props) => {
   const infoBgColor =
     props.infoBgColor ||
     "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500";
-  const cardTitle = props.cardTitle || "CMS Dashboard";
+  const cardTitle = props.title || "CMS Dashboard";
   const cardDescription =
-    props.cardDescription ||
+    props.description ||
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,necessitatibus aliquam. Perspiciatis, obcaecati nulla inventore error totam nam nesciunt fugiat temporibus alias ex iure soluta tenetur repudiandae, autem fugit.";
   const cardTechStack = props.cardTechStack || [
     "React",
@@ -18,7 +18,8 @@ const ProjectCard = (props) => {
     "MongoDB",
     "MUI",
   ];
-  const demoLink = props.demoLink || "#";
+  const poster_img = props?.images?.poster_img || "https://i.ibb.co/8D40B0c/sample-video.png"
+  const demoLink = props.demo_link || "#";
   const githubLink = props.githubLink || "#";
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const ProjectCard = (props) => {
         ></div>
         <div className="w-full md:w-4/6 p-1  aspect-video z-50 md:z-20">
           <img
-            src="https://i.ibb.co/8D40B0c/sample-video.png"
+            src={poster_img}
             alt="project-img"
             className="aspect-video"
           />
@@ -109,5 +110,3 @@ const ProjectCard = (props) => {
 };
 
 export default ProjectCard;
-
-
