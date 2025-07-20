@@ -13,7 +13,7 @@ const Projects = () => {
               Some Things I've Build
             </h1>
             <ProjectCard {...TopProjects[0]}/>
-            <ProjectCard {...TopProjects[1]} infoAlign="left" cardTechStack={["Nodejs","NextJS","TailwindCSS","ExpressJS"]}/>
+            <ProjectCard {...TopProjects[1]} infoAlign="left"/>
             <ProjectCard {...TopProjects[2]} />
             
           </div>

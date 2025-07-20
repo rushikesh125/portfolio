@@ -6,7 +6,7 @@ import GradientText from "./GradientText";
 import CodeBlock from "./CodeBlock";
 // import BackgroundSVG from ".";
 //import ScrollReveal from 'scrollreveal';
-import { fadeUp } from '@/app/utils';
+// import { fadeUp } from '@/app/utils';
 const Home = () => {
   useEffect(() => {
     // Initialize ScrollReveal

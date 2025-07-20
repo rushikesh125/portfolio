@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from "react";
-import { fadeUp } from "@/app/utils";
+// import { fadeUp } from "@/app/utils";
 import AboutSvgme from "./svg/Aboutme";
 const Aboutme = () => {
   useEffect(() => {

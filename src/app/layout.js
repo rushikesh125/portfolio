@@ -1,5 +1,7 @@
-
+// "use client"
+import Navbar from "@/components/Navbar";
 import "./globals.css";
+import GetInTouch from "@/components/GetInTouch";
 
 
 export const metadata = {
@@ -13,7 +15,9 @@ export default function RootLayout({ children }) {
       <body
         className={` antialiased`}
       >
+        <Navbar />
         {children}
+        
       </body>
     </html>
   );
