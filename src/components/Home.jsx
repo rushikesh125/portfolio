@@ -28,7 +28,7 @@ const Home = () => {
           className="absolute top-10 lg:top-0 w-[350px] h-[350px] lg:w-[600px] lg:h-[600px] rounded-full bg-gradient-to-r from-[#e200ff] to-[#8400ff] -z-10 rotate-45 "
           style={{ boxShadow: "0px 0px 2rem #8400ff" }}
         ></div>
-        <img src="/images/rishi.png" alt="profile img" className="w-[300px] lg:w-[400px]" />
+        <img src="/images/rishi3.png" alt="profile img" className="w-[300px] lg:w-[400px]" />
       </div>
       <div className="w-full lg:w-1/2  py-5 px-5 lg:py-20 relative">
         <h1 className="text-4xl font-extrabold">
