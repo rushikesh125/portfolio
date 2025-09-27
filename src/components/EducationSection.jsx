@@ -31,7 +31,7 @@ const EducationSection = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={controls}
             >
-              <div className="bg-black border-none  group relative rounded-3xl overflow-hidden">
+              <div className="bg-[#0b001a] border border-white/[0.2]  group relative rounded-3xl overflow-hidden">
                 <div className="absolute bg-purple-600 w-20 h-20 blur-[50px] rounded-full z-0 right-0 top-0"></div>
                 <div className="absolute bg-pink-700 w-20 h-20 blur-[50px] rounded-full z-0 left-0 bottom-0"></div>
                 <div className="flex items-center space-x-4 p-6">

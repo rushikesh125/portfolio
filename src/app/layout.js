@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={` antialiased`}
+        className={` antialiased pt-10 md:pt-0`}
       >
         <Navbar />
         {children}
