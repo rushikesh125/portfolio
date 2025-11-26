@@ -54,7 +54,9 @@ const HomePage = () => {
           <Home />
           <TimeLine1 />
           <Aboutme />
-          <TimeLine2 />
+          <div className="flex justify-center">
+            <TimeLine2 />
+          </div>
           <Projects />
           <Button1 />
           <div className="hidden md:block">
