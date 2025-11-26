@@ -8,7 +8,7 @@ const Aboutme = () => {
   }, []);
   return (
     <>
-      <div className="w-full  relative p-2 min-h-[500px] z-50 fade-up">
+      <div className="w-full  relative p-2 min-h-[500px] z-10 fade-up">
         {/* <div className="relative w-full  h-full   rounded-2xl p-[1px] overflow-hidden"> */}
         {/* <div className="absolute border-rotation  origin-center  bg-slate-50/[0.30]  "></div> */}
 
