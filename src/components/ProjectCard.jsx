@@ -40,7 +40,7 @@ const ProjectCard = (props) => {
           infoAlign == "right" ? "right-0" : "left-0"
         } blur-[50px] md:blur-[100px] bottom-0 md:top-1/2 -translate-y-1/2`}
         ></div>
-        <div className="w-full md:w-4/6 p-1  aspect-video z-50 md:z-20">
+        <div className="w-full md:w-4/6 p-1  aspect-video z-10 md:z-20">
           <img
             src={poster_img}
             alt="project-img"

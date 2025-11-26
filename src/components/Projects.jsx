@@ -5,7 +5,7 @@ const Projects = () => {
   
   return (
    <>
-   <div className="w-full relative  p-2 min-h-[500px] z-50">
+   <div className="w-full relative  p-2 min-h-[500px] z-10">
         <div className="relative w-full  h-full   rounded-2xl p-[1px] overflow-hidden">
 
           <div className=" w-full relative px-2 lg:px-28  rounded-2xl bg-[#0b001a] ">

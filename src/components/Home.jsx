@@ -1,93 +1,287 @@
 "use client"
-import { useEffect } from 'react';
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-// import rishi from ".";
-// import "../../public/style.css";
-import GradientText from "./GradientText";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Github, Linkedin, Download, ArrowRight, Sparkles } from 'lucide-react';
 import CodeBlock from "./CodeBlock";
-// import BackgroundSVG from ".";
-//import ScrollReveal from 'scrollreveal';
-// import { fadeUp } from '@/app/utils';
+
+gsap.registerPlugin(ScrollTrigger);
+
 const Home = () => {
+  const heroRef = useRef(null);
+  const imageRef = useRef(null);
+  const imageContainerRef = useRef(null);
+  const textRef = useRef(null);
+  const nameRef = useRef(null);
+  const titleRef = useRef(null);
+  const codeBlockRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const socialRef = useRef(null);
+  const glowRef = useRef(null);
+
   useEffect(() => {
-    // Initialize ScrollReveal
-    // fadeUp('fade-up',1000);
-    // fadeUp('fade-up-1200',1200);
-    // ScrollReveal().reveal('.fade-up', {
-    //   distance: '50px',
-    //   duration: 1000,
-    //   easing: 'ease-in-out',
-    //   origin: 'bottom',
-    //   reset: true, // Optionally resets the animation when scrolling in/out of view
-    // });
+    const ctx = gsap.context(() => {
+      // Animate glow background
+      gsap.fromTo(
+        glowRef.current,
+        { scale: 0, opacity: 0, rotation: 0 },
+        { 
+          scale: 1, 
+          opacity: 1, 
+          rotation: 45,
+          duration: 1.2, 
+          ease: "power3.out",
+          delay: 0.2
+        }
+      );
+
+      // Animate profile image
+      gsap.fromTo(
+        imageContainerRef.current,
+        { scale: 0, opacity: 0, rotation: -180 },
+        { 
+          scale: 1, 
+          opacity: 1, 
+          rotation: 0,
+          duration: 1, 
+          ease: "back.out(1.7)",
+          delay: 0.3
+        }
+      );
+
+      // Continuous floating animation for image (separate from scroll)
+      gsap.to(imageRef.current, {
+        y: -20,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut"
+      });
+
+      // Animate name with letter stagger
+      const nameChars = nameRef.current.querySelectorAll('.char');
+      gsap.fromTo(
+        nameChars,
+        { y: 50, opacity: 0, rotationX: -90 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          rotationX: 0,
+          duration: 0.6, 
+          stagger: 0.05,
+          ease: "back.out(1.7)",
+          delay: 0.5
+        }
+      );
+
+      // Animate title
+      gsap.fromTo(
+        titleRef.current,
+        { x: -100, opacity: 0 },
+        { 
+          x: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          ease: "power3.out",
+          delay: 0.8
+        }
+      );
+
+      // Animate code block
+      gsap.fromTo(
+        codeBlockRef.current,
+        { y: 50, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          ease: "power2.out",
+          delay: 1
+        }
+      );
+
+      // Animate buttons
+      gsap.fromTo(
+        buttonsRef.current.children,
+        { y: 30, opacity: 0, scale: 0.8 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          scale: 1,
+          duration: 0.6, 
+          stagger: 0.15,
+          ease: "back.out(1.7)",
+          delay: 1.2
+        }
+      );
+
+      // Animate social links
+      gsap.fromTo(
+        socialRef.current.children,
+        { x: 50, opacity: 0, rotation: 180 },
+        { 
+          x: 0, 
+          opacity: 1, 
+          rotation: 0,
+          duration: 0.6, 
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+          delay: 1.4
+        }
+      );
+
+      // REMOVED: The problematic scroll-triggered parallax that was hiding the image
+      // If you want subtle parallax, use this instead:
+      /*
+      gsap.to(imageContainerRef.current, {
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1
+        },
+        y: 50, // Much smaller value so image doesn't disappear
+        scale: 0.95 // Subtle scale instead of opacity change
+      });
+      */
+
+    }, heroRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div className="mt-10 lg:mt-14 lg:flex relative flex-row-reverse">
-      <div className="w-full lg:w-1/2  flex justify-center align-center relative overflow-hidden">
-        <div
-          className="absolute top-10 lg:top-0 w-[350px] h-[350px] lg:w-[600px] lg:h-[600px] rounded-full bg-gradient-to-r from-[#e200ff] to-[#8400ff] -z-10 rotate-45 "
-          style={{ boxShadow: "0px 0px 2rem #8400ff" }}
-        ></div>
-        <img src="/images/rishi3.png" alt="profile img" className="w-[300px] lg:w-[400px]" />
+    <section 
+      ref={heroRef}
+      className="min-h-screen pt-20 lg:pt-28 pb-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 right-10 w-72 h-72 bg-purple-600/20 rounded-full blur-[100px]" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-pink-600/20 rounded-full blur-[120px]" />
       </div>
-      <div className="w-full lg:w-1/2  py-5 px-5 lg:py-20 relative">
-        <h1 className="text-4xl font-extrabold">
-          Hi , i'm{" "}
-          <span className="text-white">Rishi</span>
-        </h1>
-        <h2 className="text-5xl font-bold">
-          <GradientText text="Full-Stack MERN Developer" />
-        </h2>
-        <CodeBlock />
-        <br />
-        {/* get Resume Button  */}
-        <div className="relative w-full ">
-          <img
-            src="/images/start-bg.svg"
-            alt="background "
-            className="absolute  left-1/2 -translate-x-1/2 -bottom-20 -z-10 w-[20rem] blur-sm"
-          />
-          <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
-            <span className="absolute inset-0 overflow-hidden rounded-full">
-              <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            </span>
-            <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10 ">
-              <a href='/Resume.pdf' target='_blank' download={`Rushikesh_Gaikwad_Resume.pdf`}>Get Resume</a>
-            </div>
-            <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-pink-400/30 via-emerald-400/90 to-violet-400/0 transition-opacity duration-500 group-hover:opacity-40" />
-          </button>
 
-          {/* Github link Button  */}
-          <div className="Social-links   inline-block absolute -top-2 right-0">
-            <Link href={`https://github.com/rushikesh125`} target='_blank' className="p-2 fade-up inline-block">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="currentColor"
-                className="bi bi-github "
-                viewBox="0 0 16 16"
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-12 lg:gap-20">
+          
+          {/* Image Section */}
+          <div className="w-full lg:w-1/2 flex justify-center items-center relative">
+            {/* Animated Glow */}
+            <div 
+              ref={glowRef}
+              className="absolute w-[350px] h-[350px] lg:w-[600px] lg:h-[600px] rounded-full bg-gradient-to-r from-purple-600 to-pink-600 -z-10 blur-3xl opacity-40"
+              style={{ boxShadow: '0px 0px 80px rgba(132, 0, 255, 0.6)' }}
+            />
+            
+            {/* Profile Image Container */}
+            <div ref={imageContainerRef} className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-2xl opacity-50 animate-pulse" />
+              <img 
+                ref={imageRef}
+                src="/images/rishi3.png" 
+                alt="Rushikesh Gaikwad - Full Stack Developer" 
+                className="w-[300px] lg:w-[450px] relative z-10 drop-shadow-2xl"
+              />
+            </div>
+          </div>
+
+          {/* Content Section */}
+          <div ref={textRef} className="w-full lg:w-1/2 space-y-6">
+            {/* Greeting */}
+            <div ref={nameRef} className="space-y-2">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-300 flex flex-wrap gap-2">
+                <span className="char">H</span>
+                <span className="char">i</span>
+                <span className="char">,</span>
+                <span className="char mx-2">I</span>
+                <span className="char">'</span>
+                <span className="char">m</span>
+                <span className="text-white char ml-3">R</span>
+                <span className="text-white char">u</span>
+                <span className="text-white char">s</span>
+                <span className="text-white char">h</span>
+                <span className="text-white char">i</span>
+              </h1>
+            </div>
+
+            {/* Title with Gradient */}
+            <div ref={titleRef}>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent leading-tight">
+                Full-Stack MERN Developer
+              </h2>
+              <div className="flex items-center gap-2 mt-3 text-gray-400">
+                <Sparkles size={18} className="text-purple-400" />
+                <span className="text-sm">Crafting digital experiences with modern tech</span>
+              </div>
+            </div>
+
+            {/* Code Block */}
+            <div ref={codeBlockRef}>
+              <CodeBlock />
+            </div>
+
+            {/* Buttons */}
+            <div ref={buttonsRef} className="flex flex-wrap gap-4 pt-4">
+              {/* Resume Button */}
+              <a
+                href="/Resume.pdf"
+                download="RushikeshGaikwadResume.pdf"
+                className="group relative px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium overflow-hidden shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300"
+                onMouseEnter={(e) => {
+                  gsap.to(e.currentTarget, { scale: 1.05, duration: 0.3 });
+                }}
+                onMouseLeave={(e) => {
+                  gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
+                }}
               >
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-              </svg>
-            </Link>
-            <Link href={`https://www.linkedin.com/in/rushi7gaikwad`} target='_blank' className="p-2 fade-up-1200 inline-block">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="currentColor"
-                className="bi bi-linkedin"
-                viewBox="0 0 16 16"
+                <span className="relative z-10 flex items-center gap-2">
+                  <Download size={18} />
+                  Get Resume
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+
+              {/* View Projects Button */}
+              <button
+                onClick={() => {
+                  const projectsSection = document.getElementById('projects');
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="group px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-lg font-medium border border-purple-500/30 hover:border-purple-500/50 transition-all duration-300 flex items-center gap-2"
               >
-                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-              </svg>
-            </Link>
+                View Projects
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            {/* Social Links */}
+            <div ref={socialRef} className="flex items-center gap-4 pt-4">
+              <span className="text-gray-400 text-sm">Connect with me:</span>
+              <Link
+                href="https://github.com/rushikesh125"
+                target="_blank"
+                className="p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300 hover:scale-110 group border border-white/10 hover:border-purple-500/30"
+              >
+                <Github size={20} className="text-gray-300 group-hover:text-white transition-colors" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/rushi7gaikwad"
+                target="_blank"
+                className="p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300 hover:scale-110 group border border-white/10 hover:border-purple-500/30"
+              >
+                <Linkedin size={20} className="text-gray-300 group-hover:text-white transition-colors" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+  
+    </section>
   );
 };
 
