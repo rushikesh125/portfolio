@@ -79,6 +79,7 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="space-y-20 lg:space-y-24">
           {TopProjects.map((project, index) => (
+            index<=2 && <>
             <div
               key={project.id}
               ref={(el) => (cardsRef.current[index] = el)}
@@ -88,6 +89,7 @@ const Projects = () => {
                 infoAlign={index % 2 === 0 ? "right" : "left"}
               />
             </div>
+            </>
           ))}
         </div>
 
