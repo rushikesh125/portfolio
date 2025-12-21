@@ -1,154 +1,101 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { TopProjects } from "@/projects";
 import { BentoProjectCard } from "@/components/BentoProjectCard";
-import { ArrowLeft, Sparkles, Layers } from "lucide-react";
+import { ArrowLeft, Sparkles, Layers, LayoutGrid } from "lucide-react";
 import Link from "next/link";
-import gsap from "gsap";
 
-const pageVariants = {
+const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { duration: 0.6, ease: "easeOut" }
-  },
-};
-
-const gridVariants = {
   visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 };
 
 export default function ProjectsPage() {
-  const headerRef = useRef(null);
-
-  useEffect(() => {
-    if (headerRef.current) {
-      gsap.fromTo(
-        headerRef.current,
-        { y: -30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
-      );
-    }
-  }, []);
-
+  const containerRef = useRef(null);
+  
   return (
-    <motion.main
-      className="min-h-screen bg-[#0b001a] text-white relative overflow-hidden"
-      initial="hidden"
-      animate="visible"
-      variants={pageVariants}
-    >
-      {/* Background Elements */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-600/10 rounded-full blur-[150px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-purple-600/5 to-pink-600/5 rounded-full blur-[200px]" />
+    <main className="min-h-screen bg-[#030014] text-slate-200 selection:bg-purple-500/30">
+      {/* Subtle Ambient Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-purple-900/20 blur-[120px]" />
+        <div className="absolute top-[20%] -right-[10%] w-[30%] h-[30%] rounded-full bg-blue-900/10 blur-[100px]" />
       </div>
 
-      <div className="px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-20">
-        {/* Header */}
-        <div ref={headerRef} className="max-w-7xl mx-auto mb-12 sm:mb-16">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div className="flex-1">
-              {/* Breadcrumb */}
-              <div className="inline-flex items-center gap-3 mb-4">
-                <Layers className="w-5 h-5 text-purple-400" />
-                <span className="text-xs sm:text-sm uppercase tracking-[0.15em] text-purple-400/80 font-medium">
-                  All Projects
-                </span>
-                <div className="h-px w-12 bg-gradient-to-r from-purple-500/50 to-transparent" />
-              </div>
-
-              {/* Title */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent">
-                  My Portfolio
-                </span>
-                <span className="block text-xl sm:text-2xl md:text-3xl text-gray-400 mt-2 font-normal">
-                  Building Products That Matter
-                </span>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 lg:py-24">
+        {/* Header Section */}
+        <header className="mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col md:flex-row md:items-end justify-between gap-8"
+          >
+            <div className="space-y-4">
+              <Link 
+                href="/" 
+                className="group inline-flex items-center gap-2 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                Back to overview
+              </Link>
+              
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
+                Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Works</span>
               </h1>
-
-              {/* Description */}
-              <p className="text-sm sm:text-base text-gray-400 max-w-2xl leading-relaxed">
-                A curated collection of full-stack applications, AI-powered tools, and innovative web experiences.
-                Each project showcases modern tech stacks, clean architecture, and attention to detail.
+              
+              <p className="text-lg text-slate-400 max-w-2xl leading-relaxed">
+                A collection of digital experiences at the intersection of 
+                design and engineering. Focused on performance, accessibility, and aesthetics.
               </p>
-
-              {/* Stats */}
-              <div className="flex items-center gap-6 mt-6">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-purple-400" />
-                  <span className="text-sm text-gray-400">{TopProjects.length} Projects</span>
-                </div>
-                <div className="h-4 w-px bg-gray-700" />
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-sm text-gray-400">Always Learning</span>
-                </div>
-              </div>
             </div>
 
-            {/* Back Button */}
-            <Link
-              href="/"
-              className="group inline-flex items-center gap-2 px-5 py-3 bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-purple-500/30 rounded-xl text-sm text-gray-300 hover:text-white transition-all"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span>Back to Home</span>
-            </Link>
-          </div>
+            <div className="flex gap-8 border-l border-white/10 pl-8 hidden lg:flex">
+              <div>
+                <p className="text-2xl font-bold text-white">{TopProjects.length}</p>
+                <p className="text-xs uppercase tracking-widest text-slate-500">Projects</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-white">2025</p>
+                <p className="text-xs uppercase tracking-widest text-slate-500">Edition</p>
+              </div>
+            </div>
+          </motion.div>
+        </header>
 
-          {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent mt-8" />
-        </div>
-
-        {/* Bento Grid */}
+        {/* Dynamic Bento Grid */}
         <motion.section
-          className="max-w-7xl mx-auto grid gap-4 sm:gap-5 md:gap-6
-                     grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[320px] sm:auto-rows-[360px]"
-          variants={gridVariants}
+          variants={containerVariants}
           initial="hidden"
           animate="visible"
+          className="grid grid-cols-1 md:grid-cols-4 auto-rows-[22rem] gap-4"
         >
           {TopProjects.map((project, index) => (
             <BentoProjectCard
               key={project.id ?? index}
               project={project}
-              layoutVariant={getBentoVariant(index)}
+              // This logic creates a repeating 1-2-1 pattern for the Bento look
+              index={index}
             />
           ))}
         </motion.section>
 
-        {/* Footer CTA */}
-        <div className="max-w-7xl mx-auto mt-16 sm:mt-20 text-center">
-          <div className="inline-flex flex-col items-center gap-4 px-8 py-6 bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-xl border border-purple-500/20 rounded-2xl">
-            <Sparkles className="w-8 h-8 text-purple-400" />
-            <p className="text-gray-300 text-sm sm:text-base max-w-md">
-              Interested in collaborating? Let's build something amazing together!
-            </p>
-            <Link
-              href="/#contact"
-              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-xl text-white text-sm font-medium shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all"
-            >
-              Get In Touch
-            </Link>
-          </div>
-        </div>
+        {/* Minimal Footer CTA */}
+        <footer className="mt-32 text-center">
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-16" />
+          <h2 className="text-3xl font-semibold text-white mb-6">Have an idea?</h2>
+          <Link
+            href="/#contact"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-purple-500 hover:text-white transition-all duration-300 group"
+          >
+            Start a Conversation
+            <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </footer>
       </div>
-    </motion.main>
+    </main>
   );
-}
-
-function getBentoVariant(index) {
-  if (index === 0) return "hero";
-  if (index === 1) return "vertical";
-  if (index === 2) return "wide";
-  return "compact";
 }
