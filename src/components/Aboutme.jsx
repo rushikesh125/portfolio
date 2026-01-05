@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -31,8 +31,8 @@ const Aboutme = () => {
             trigger: sectionRef.current,
             start: "top 80%",
             end: "top 50%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
@@ -49,13 +49,14 @@ const Aboutme = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 70%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
       // Content paragraphs animation
-      const paragraphs = contentRef.current.querySelectorAll('.about-paragraph');
+      const paragraphs =
+        contentRef.current.querySelectorAll(".about-paragraph");
       gsap.fromTo(
         paragraphs,
         { y: 50, opacity: 0 },
@@ -68,8 +69,8 @@ const Aboutme = () => {
           scrollTrigger: {
             trigger: contentRef.current,
             start: "top 75%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
@@ -86,8 +87,8 @@ const Aboutme = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 60%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
@@ -104,11 +105,10 @@ const Aboutme = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 50%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
-
     }, sectionRef);
 
     return () => ctx.revert();
@@ -117,29 +117,33 @@ const Aboutme = () => {
   const stats = [
     { icon: Code2, label: "Technologies", value: "15+" },
     { icon: Rocket, label: "Projects", value: "20+" },
-    { icon: Award, label: "Hackathons Won", value: "3+" }
+    { icon: Award, label: "Hackathons Won", value: "3+" },
   ];
 
   const highlights = [
     {
       icon: Sparkles,
       title: "AI Integration Expert",
-      description: "Built AI-powered systems using Google Gemini, RAG, and smart matching algorithms"
+      description:
+        "Built AI-powered systems using Google Gemini, RAG, and smart matching algorithms",
     },
     {
       icon: Target,
       title: "Full-Stack Mastery",
-      description: "Proficient in MERN stack, Next.js, and modern web development practices"
+      description:
+        "Proficient in MERN stack, Next.js, and modern web development practices",
     },
     {
       icon: Zap,
       title: "Problem Solver",
-      description: "Won multiple hackathons creating innovative, real-world solutions"
-    }
+      description:
+        "Won multiple hackathons creating innovative, real-world solutions",
+    },
   ];
 
   return (
-    <section 
+    <section
+      id="about"
       ref={sectionRef}
       className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
@@ -171,7 +175,9 @@ const Aboutme = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
                 <div className="relative bg-white/5 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300">
                   <IconComponent className="w-8 h-8 text-purple-400 mb-3" />
-                  <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-3xl font-bold text-white mb-1">
+                    {stat.value}
+                  </div>
                   <div className="text-sm text-gray-400">{stat.label}</div>
                 </div>
               </div>
@@ -195,19 +201,53 @@ const Aboutme = () => {
           {/* Text Content */}
           <div ref={contentRef} className="lg:w-1/2 space-y-6">
             <p className="about-paragraph text-gray-300 leading-relaxed">
-              Hi, I'm <span className="text-white font-semibold">Rushikesh Gaikwad</span> — a passionate and dynamic <span className="text-purple-400 font-semibold">Full-Stack Web Developer</span> and <span className="text-pink-400 font-semibold">B.Tech Computer Science & Engineering</span> student from Maharashtra, India. I specialize in building scalable, intelligent, and user-centric web applications that solve real-world problems with modern technologies and AI-driven innovation.
+              Hi, I'm{" "}
+              <span className="text-white font-semibold">
+                Rushikesh Gaikwad
+              </span>{" "}
+              — a passionate and dynamic{" "}
+              <span className="text-purple-400 font-semibold">
+                Full-Stack Web Developer
+              </span>{" "}
+              and{" "}
+              <span className="text-pink-400 font-semibold">
+                B.Tech Computer Science & Engineering
+              </span>{" "}
+              student from Maharashtra, India. I specialize in building
+              scalable, intelligent, and user-centric web applications that
+              solve real-world problems with modern technologies and AI-driven
+              innovation.
             </p>
 
             <p className="about-paragraph text-gray-300 leading-relaxed">
-              With a strong foundation in both front-end and back-end development, I bring ideas to life through technologies like <span className="text-purple-400">React.js, Next.js, Node.js, Express.js, MongoDB, and MySQL</span>. I love creating intuitive user interfaces with Tailwind CSS, Bootstrap, and responsive design best practices.
+              With a strong foundation in both front-end and back-end
+              development, I bring ideas to life through technologies like{" "}
+              <span className="text-purple-400">
+                React.js, Next.js, Node.js, Express.js, MongoDB, and MySQL
+              </span>
+              . I love creating intuitive user interfaces with Tailwind CSS,
+              Bootstrap, and responsive design best practices.
             </p>
 
             <p className="about-paragraph text-gray-300 leading-relaxed">
-              What truly sets me apart is my enthusiasm for <span className="text-pink-400 font-semibold">AI integration</span> in web apps. I've worked extensively with LLMs like <span className="text-purple-400">Google Gemini</span>, building AI-based systems including a Resume Analyzer, Personalized Course Generator, and Career Counsellor — all utilizing RAG and smart matching systems.
+              What truly sets me apart is my enthusiasm for{" "}
+              <span className="text-pink-400 font-semibold">
+                AI integration
+              </span>{" "}
+              in web apps. I've worked extensively with LLMs like{" "}
+              <span className="text-purple-400">Google Gemini</span>, building
+              AI-based systems including a Resume Analyzer, Personalized Course
+              Generator, and Career Counsellor — all utilizing RAG and smart
+              matching systems.
             </p>
 
             <p className="about-paragraph text-gray-300 leading-relaxed">
-              Driven by curiosity and an entrepreneurial mindset, I'm constantly exploring new technologies, frameworks, and problem-solving techniques. <span className="text-white font-semibold">Let's build something transformative together!</span>
+              Driven by curiosity and an entrepreneurial mindset, I'm constantly
+              exploring new technologies, frameworks, and problem-solving
+              techniques.{" "}
+              <span className="text-white font-semibold">
+                Let's build something transformative together!
+              </span>
             </p>
           </div>
         </div>
@@ -224,15 +264,19 @@ const Aboutme = () => {
               >
                 {/* Hover glow */}
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 to-pink-600/0 group-hover:from-purple-600/20 group-hover:to-pink-600/20 rounded-xl blur-xl transition-all duration-300" />
-                
+
                 <div className="relative bg-white/5 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300 h-full">
                   <div className="flex items-start gap-4">
                     <div className="p-3 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-lg">
                       <IconComponent className="w-6 h-6 text-purple-400" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-white mb-2">{highlight.title}</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">{highlight.description}</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">
+                        {highlight.title}
+                      </h3>
+                      <p className="text-sm text-gray-400 leading-relaxed">
+                        {highlight.description}
+                      </p>
                     </div>
                   </div>
                 </div>

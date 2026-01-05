@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectCard from "./ProjectCard";
 import { TopProjects } from "@/projects";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,7 @@ const Projects = () => {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const cardsRef = useRef([]);
+  const router = useRouter();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -27,7 +29,7 @@ const Projects = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse"
+            toggleActions: "play none none reverse",
           },
         }
       );
@@ -46,7 +48,7 @@ const Projects = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 70%",
-            toggleActions: "play none none reverse"
+            toggleActions: "play none none reverse",
           },
         }
       );
@@ -57,13 +59,14 @@ const Projects = () => {
 
   return (
     <section
+      id="featured-projects"
       ref={sectionRef}
       className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Background Blur Orbs */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] -z-10" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-600/10 rounded-full blur-[120px] -z-10" />
-      
+
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <div ref={headingRef} className="text-center mb-16">
@@ -71,36 +74,30 @@ const Projects = () => {
             Featured Projects
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Showcasing my best work in full-stack development, AI integration, and modern web applications
+            Showcasing my best work in full-stack development, AI integration,
+            and modern web applications
           </p>
           <div className="h-1 w-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mt-5" />
         </div>
 
         {/* Projects Grid */}
         <div className="space-y-20 lg:space-y-24">
-          {TopProjects.map((project, index) => (
-            index<=2 &&
-            <div
-              key={index}
-              ref={(el) => (cardsRef.current[index] = el)}
-            >
-              <ProjectCard
-                {...project}
-                infoAlign={index % 2 === 0 ? "right" : "left"}
-              />
-            </div>
-            
-          ))}
+          {TopProjects.map(
+            (project, index) =>
+              index <= 2 && (
+                <div key={index} ref={(el) => (cardsRef.current[index] = el)}>
+                  <ProjectCard
+                    {...project}
+                    infoAlign={index % 2 === 0 ? "right" : "left"}
+                  />
+                </div>
+              )
+          )}
         </div>
-
-        {/* View More CTA */}
-        <div className="text-center mt-20">
-          <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium overflow-hidden shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105">
-            <span className="relative z-10 flex items-center gap-2">
-              View All Projects
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div onClick={()=>router.push("/projects")} className="relative my-10 mx-auto p-[2px] w-fit overflow-hidden text-center flex justify-center items-center rounded-xl cursor-pointer">
+          <div className=" absolute  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-[200%] h-8 animate-spin-slow"></div>
+          <button className="relative z-30 bg-slate-900 py-2 px-4 rounded-xl">
+            Explore All
           </button>
         </div>
       </div>

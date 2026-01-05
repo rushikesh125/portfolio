@@ -5,6 +5,7 @@ import Drawer from "./Drawer";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,7 @@ const Navbar = () => {
   const navRef = useRef(null);
   const logoRef = useRef(null);
   const menuItemsRef = useRef([]);
-  
+  const router = useRouter();
   useEffect(() => {
     // Navbar entrance animation
     gsap.fromTo(
@@ -96,8 +97,8 @@ const Navbar = () => {
               <button
                 key={item.id}
                 ref={(el) => (menuItemsRef.current[index] = el)}
-                onClick={() => scrollToSection(item.id)}
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-all duration-300 rounded-lg hover:bg-white/5 group overflow-hidden"
+                onClick={() => router.push(item.link)}
+                className="cursor-pointer relative px-4 py-2 text-gray-300 hover:text-white transition-all duration-300 rounded-lg hover:bg-white/5 group overflow-hidden"
               >
                 <span className="relative z-10">{item.name}</span>
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 transition-all duration-300 group-hover:w-full" />

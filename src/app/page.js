@@ -16,7 +16,6 @@ import {
   TimeLine4ForMobile,
 } from "@/components/timeLines";
 import Skills from "@/components/Skills";
-import { Button1 } from "@/components/Buttons";
 // import { ResumeCard } from "@/components/resume-card";
 import { my_education } from "@/education";
 import EducationSection from "@/components/EducationSection";
@@ -58,7 +57,6 @@ const HomePage = () => {
             <TimeLine2 />
           </div>
           <Projects />
-          <Button1 />
           <div className="hidden md:block">
             <TimeLine3 />
           </div>
