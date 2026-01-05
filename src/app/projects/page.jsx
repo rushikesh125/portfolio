@@ -1,101 +1,56 @@
-"use client";
+import React from "react";
+import ProjectCard2 from "@/components/ProjectCard2";
+import { TopProjects } from "@/projects"; // Adjust path if needed
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { TopProjects } from "@/projects";
-import { BentoProjectCard } from "@/components/BentoProjectCard";
-import { ArrowLeft, Sparkles, Layers, LayoutGrid } from "lucide-react";
-import Link from "next/link";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
-
-export default function ProjectsPage() {
-  const containerRef = useRef(null);
-  
+const ProjectsPage = () => {
   return (
-    <main className="min-h-screen bg-[#030014] text-slate-200 selection:bg-purple-500/30">
-      {/* Subtle Ambient Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-purple-900/20 blur-[120px]" />
-        <div className="absolute top-[20%] -right-[10%] w-[30%] h-[30%] rounded-full bg-blue-900/10 blur-[100px]" />
-      </div>
+    <div className="min-h-screen relative overflow-hidden bg-black text-white py-20 px-4 sm:px-6">
+      
+      {/* --- BACKGROUND EFFECTS --- */}
+      
+      {/* 1. Base Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      
+      {/* 2. Top Center Glow (Purple) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-900/30 rounded-full blur-[100px] opacity-50 pointer-events-none"></div>
+      
+      {/* 3. Bottom Right Glow (Pink) */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pink-900/20 rounded-full blur-[120px] opacity-40 pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        {/* Header Section */}
-        <header className="mb-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-8"
-          >
-            <div className="space-y-4">
-              <Link 
-                href="/" 
-                className="group inline-flex items-center gap-2 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors"
-              >
-                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                Back to overview
-              </Link>
-              
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-                Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Works</span>
-              </h1>
-              
-              <p className="text-lg text-slate-400 max-w-2xl leading-relaxed">
-                A collection of digital experiences at the intersection of 
-                design and engineering. Focused on performance, accessibility, and aesthetics.
-              </p>
-            </div>
+      
+      {/* --- MAIN CONTENT --- */}
+      <div className="relative z-10 max-w-7xl mx-auto space-y-16">
+        
+        {/* Page Header */}
+        <div className="text-center space-y-6">
+          <div className="inline-block">
+            <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-white via-purple-100 to-gray-400 bg-clip-text text-transparent tracking-tight pb-2">
+              Featured Projects
+            </h1>
+            <div className="h-1 w-24 mx-auto bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2"></div>
+          </div>
+          
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
+            A showcase of my recent work in <span className="text-purple-400">Full Stack Development</span> and <span className="text-pink-400">AI integration</span>.
+          </p>
+        </div>
 
-            <div className="flex gap-8 border-l border-white/10 pl-8 hidden lg:flex">
-              <div>
-                <p className="text-2xl font-bold text-white">{TopProjects.length}</p>
-                <p className="text-xs uppercase tracking-widest text-slate-500">Projects</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">2025</p>
-                <p className="text-xs uppercase tracking-widest text-slate-500">Edition</p>
-              </div>
-            </div>
-          </motion.div>
-        </header>
-
-        {/* Dynamic Bento Grid */}
-        <motion.section
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-4 auto-rows-[22rem] gap-4"
-        >
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 justify-items-center">
           {TopProjects.map((project, index) => (
-            <BentoProjectCard
-              key={project.id ?? index}
-              project={project}
-              // This logic creates a repeating 1-2-1 pattern for the Bento look
-              index={index}
+            <ProjectCard2
+              key={index}
+              title={project.title}
+              description={project.description}
+              images={project.images}
+              demo_link={project.demo_link}
+              // github_link={project.github_link} 
             />
           ))}
-        </motion.section>
-
-        {/* Minimal Footer CTA */}
-        <footer className="mt-32 text-center">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-16" />
-          <h2 className="text-3xl font-semibold text-white mb-6">Have an idea?</h2>
-          <Link
-            href="/#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-purple-500 hover:text-white transition-all duration-300 group"
-          >
-            Start a Conversation
-            <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </footer>
+        </div>
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default ProjectsPage;

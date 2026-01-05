@@ -32,9 +32,9 @@ const CodeBlock = () => {
           <Typewriter
             options={{
               strings: [
-                'I build <span style="color: #a855f7;">scalable</span> full-stack applications with <span style="color: #ec4899;">React, Node.js & MongoDB</span>.',
+                'I build <span style="color: #a855f7;">scalable</span> full-stack applications with <span style="color: #ec4899;">NextJS, NodeJS , ExpressJS and MongoDB/PostgreSQL</span>.',
                 'Passionate about creating <span style="color: #a855f7;">modern web experiences</span> with <span style="color: #ec4899;">AI integration</span>.',
-                'Specialized in <span style="color: #a855f7;">responsive design</span> using <span style="color: #ec4899;">Tailwind CSS & Next.js</span>.',
+                'Specialized in <span style="color: #a855f7;">responsive design</span> using <span style="color: #ec4899;">Tailwind CSS and Next.js</span>.',
               ],
               autoStart: true,
               loop: true,

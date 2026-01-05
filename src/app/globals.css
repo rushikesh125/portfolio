@@ -28,10 +28,9 @@
   content: "";
   display: block;
   position: relative;
-  /* top: -5px; */
+
   width: 300px;
   height: 1px;
-  /* margin-left: 20px; */
   background-color: #233554;
 }
 
@@ -223,9 +222,6 @@
   }
 }
 
-/* .glassmorphism {
-  @apply bg-white bg-opacity-10 backdrop-blur-md border border-gray-200 border-opacity-20 shadow-lg rounded-lg;
-} */
 
 body {
   background-color: #0b001a;
@@ -377,3 +373,235 @@ svg#freepik_stories-hand-coding.animated #freepik--Tabs--inject-243 {
     @apply bg-background text-foreground;
   }
 }
+
+/* 
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  cursor: none; 
+}
+
+
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.07;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(170%) brightness(100%);
+} */
+
+
+/* 
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+  --primary: #ccff00; 
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+.font-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  color: transparent;
+}
+
+
+.grid-cell {
+  transition: background-color 0.5s ease, transform 0.2s ease;
+}
+.grid-cell:hover {
+  background-color: var(--primary);
+  transition: background-color 0s ease;
+  transform: scale(1.1);
+} */
+
+
+
+/* GE4 */
+
+/* :root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #FF3333; 
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  cursor: none; 
+  overflow-x: hidden;
+}
+
+
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+.noise {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.05;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+
+.text-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  color: transparent;
+  transition: all 0.3s ease;
+}
+.text-outline:hover {
+  -webkit-text-stroke: 1px var(--accent);
+  color: var(--accent);
+}
+
+.clip-text-image {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000');
+  background-size: cover;
+  background-position: center;
+} */
+
+/* ge5 */
+/* 
+:root {
+  --bg: #030303;
+  --fg: #ffffff;
+  --acid: #ccff00;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  cursor: none; 
+}
+
+
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0.04;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+
+.text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
+.text-stroke:hover { -webkit-text-stroke: 1px var(--acid); color: var(--acid); }
+.text-stroke-black { -webkit-text-stroke: 1px rgba(0,0,0,0.5); color: transparent; }
+
+.clip-window {
+  clip-path: polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%);
+  transition: clip-path 0.5s ease;
+}
+
+
+.gradient-text {
+  background: linear-gradient(to right, #fff, #666);
+  -webkit-background-clip: text;
+  color: transparent;
+} */
+
+/* Ge5 */
+/* 
+
+:root {
+  --bg: #030303;
+  --fg: #ffffff;
+  --acid: #ccff00;
+  --neon-blue: #00f3ff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  cursor: none; 
+}
+
+
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  opacity: 0.04;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+
+.text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
+.text-stroke:hover { -webkit-text-stroke: 1px var(--acid); color: var(--acid); }
+.clip-window { clip-path: polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%); transition: clip-path 0.5s ease; }
+.font-outline-2 { -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5); color: transparent; }
+.font-outline-2:hover { -webkit-text-stroke: 2px #fff; }
+
+
+.perspective-1000 { perspective: 1000px; } */
+/* 
+:root {
+  --bg: #050505;
+  --fg: #e0e0e0;
+  --accent: #ff003c; 
+  --neon: #00f3ff;  
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+.noise {
+  position: fixed; inset: 0; z-index: 9990; pointer-events: none;
+  opacity: 0.05; background: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+.text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
+.text-stroke:hover { -webkit-text-stroke: 1px var(--neon); color: var(--neon); }
+.perspective-1000 { perspective: 1000px; }
+.clip-triangle { clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.mix-diff { mix-blend-mode: difference; }
+
+.canvas-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1s; }
+.canvas-active { opacity: 1; } */
