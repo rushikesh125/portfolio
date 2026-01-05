@@ -84,11 +84,12 @@ const GetInTouch = () => {
   const socialLinks = [
     { icon: Github, href: "https://github.com/rushikesh125", label: "GitHub", color: "hover:text-gray-400" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/rushi7gaikwad", label: "LinkedIn", color: "hover:text-blue-400" },
-    { icon: Twitter, href: "https://twitter.com/rushikesh125", label: "Twitter", color: "hover:text-sky-400" },
+    // { icon: Twitter, href: "https://twitter.com/rushikesh125", label: "Twitter", color: "hover:text-sky-400" },
   ];
 
   return (
     <section 
+      id="contact"
       ref={sectionRef}
       className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
