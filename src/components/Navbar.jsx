@@ -63,12 +63,13 @@ const Navbar = () => {
   };
 
   const menuItems = [
-    { name: 'Home', id: 'home' },
-    { name: 'About', id: 'about' },
-    { name: 'Skills', id: 'skills' },
-    { name: 'Projects', id: 'projects' },
-    { name: 'Education', id: 'education' },
-    { name: 'Contact', id: 'contact' }
+    { name: 'Home', id: 'home' ,link:"/"},
+    { name: 'About', id: 'about',link:"/#about" },
+    { name: 'Skills', id: 'skills',link:"/#skills" },
+    { name: 'Featured Projects', id: 'projects',link:"/#featured-projects" },
+    { name: 'All Projects', id: 'all-projects',link:"/projects" },
+    { name: 'Education', id: 'education',link:"/#education"},
+    { name: 'Contact', id: 'contact',link:"/#contact" }
   ];
 
   return (
